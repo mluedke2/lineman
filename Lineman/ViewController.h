@@ -8,10 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class DetectorView;
+
 @interface ViewController : NSViewController {
     
+    IBOutlet DetectorView *detectorView;
        
 }
 
+@property (strong, nonatomic) IBOutlet DetectorView *detectorView;
 
 @end

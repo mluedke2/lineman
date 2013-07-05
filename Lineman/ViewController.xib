@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="detectorView" destination="LsA-tx-DQn" id="P5z-HB-qcK"/>
                 <outlet property="view" destination="1" id="CDv-j7-bpu"/>
             </connections>
         </customObject>
@@ -16,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="479"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView id="LsA-tx-DQn" customClass="DetectorView">
+                <customView id="LsA-tx-DQn" customClass="MirrorDetectorView">
                     <rect key="frame" x="0.0" y="105" width="480" height="349"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
@@ -27,8 +28,14 @@
         <class className="DetectorView" superclassName="NSView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetectorView.h"/>
         </class>
+        <class className="MirrorDetectorView" superclassName="DetectorView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MirrorDetectorView.h"/>
+        </class>
         <class className="ViewController" superclassName="NSViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detectorView" candidateClass="DetectorView"/>
+            </relationships>
         </class>
     </classes>
 </document>

@@ -79,15 +79,17 @@
     [[self subviews]
     makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    // IF YOU WANT THE LINES TO DISAPPEAR TOO, UNCOMMENT THIS NEXT CHUNK!
- /*   pt1=NSMakePoint(0.0, 0.0);
+    //[self clearLines];
+}
+
+- (void) clearLines {
+    pt1=NSMakePoint(0.0, 0.0);
     pt2=NSMakePoint(0.0, 0.0);
     pt3=NSMakePoint(0.0, 0.0);
     pt4=NSMakePoint(0.0, 0.0);
     pt5=NSMakePoint(0.0, 0.0);
     
     [self setNeedsDisplay:YES];
-     */
 }
 
 - (void)drawDots:(NSEvent *)event {
@@ -104,20 +106,13 @@
         NSPoint rawPt3 = [[array objectAtIndex:2] normalizedPosition];
         NSPoint rawPt4 = [[array objectAtIndex:3] normalizedPosition];
         NSPoint rawPt5 = [[array objectAtIndex:4] normalizedPosition];
-        
+                
         float width = [[array objectAtIndex:0] deviceSize].width;
-        
         float height = [[array objectAtIndex:0] deviceSize].height;
         
         // redefine the points we really want!
-        pt1 = NSMakePoint((rawPt1.x * width), (rawPt1.y * height));
-        pt2 = NSMakePoint((rawPt2.x * width), (rawPt2.y * height));
-        pt3 = NSMakePoint((rawPt3.x * width), (rawPt3.y * height));
-        pt4 = NSMakePoint((rawPt4.x * width), (rawPt4.y * height));
-        pt5 = NSMakePoint((rawPt5.x * width), (rawPt5.y * height));
-        
-   //     NSLog(@"{%.2f,%.2f},{%.2f,%.2f},{%.2f,%.2f},{%.2f,%.2f},{%.2f,%.2f}", (pt0.x * width), (pt0.y * height), (pt1.x * width), (pt1.y * height), (pt2.x * width), (pt2.y * height), (pt3.x * width), (pt3.y * height), (pt4.x * width), (pt4.y * height));
-        
+        [self redefinePt1:rawPt1 andPt2:rawPt2 andPt3:rawPt3 andPt4:rawPt4 andPt5:rawPt5 forScreenWidth:width andHeight:height];
+    
         // make things appear!
         self.dot1 = [[NSImageView alloc] init];
         [self.dot1 setFrame:NSRectFromCGRect(CGRectMake((pt1.x-8), (pt1.y-8), 16, 16))];
@@ -148,6 +143,18 @@
                 
     }
    
+}
+
+-(void)redefinePt1:(NSPoint)rawPt1 andPt2:(NSPoint)rawPt2 andPt3:(NSPoint)rawPt3 andPt4:(NSPoint)rawPt4 andPt5:(NSPoint)rawPt5 forScreenWidth:(float)width andHeight:(float)height {
+    
+    NSLog(@"detector view redefining points");
+        
+    pt1 = NSMakePoint((rawPt1.x * width), (rawPt1.y * height));
+    pt2 = NSMakePoint((rawPt2.x * width), (rawPt2.y * height));
+    pt3 = NSMakePoint((rawPt3.x * width), (rawPt3.y * height));
+    pt4 = NSMakePoint((rawPt4.x * width), (rawPt4.y * height));
+    pt5 = NSMakePoint((rawPt5.x * width), (rawPt5.y * height));
+    
     
 }
 

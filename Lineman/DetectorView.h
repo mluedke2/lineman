@@ -12,18 +12,18 @@
     
     NSBezierPath *drawingPath;
     
-    
-     NSImageView *dot1;
-     NSImageView *dot2;
-     NSImageView *dot3;
-     NSImageView *dot4;
-     NSImageView *dot5;
+    NSImageView *dot1;
+    NSImageView *dot2;
+    NSImageView *dot3;
+    NSImageView *dot4;
+    NSImageView *dot5;
     
     NSPoint pt1;
     NSPoint pt2;
     NSPoint pt3;
     NSPoint pt4;
     NSPoint pt5;
+    
     
     
 }
@@ -39,5 +39,7 @@
 @property (nonatomic) NSPoint pt3;
 @property (nonatomic) NSPoint pt4;
 @property (nonatomic) NSPoint pt5;
+
+-(void)redefinePt1:(NSPoint)rawPt1 andPt2:(NSPoint)rawPt2 andPt3:(NSPoint)rawPt3 andPt4:(NSPoint)rawPt4 andPt5:(NSPoint)rawPt5 forScreenWidth:(float)width andHeight:(float)height;
 
 @end

@@ -20,6 +20,7 @@
 		FA934DF017872A540001AD46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA934DEE17872A540001AD46 /* main.m */; };
 		FA934DF517872A5D0001AD46 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA934DF117872A5D0001AD46 /* Credits.rtf */; };
 		FA934DF617872A5D0001AD46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA934DF317872A5D0001AD46 /* InfoPlist.strings */; };
+		FA934DF9178736F50001AD46 /* MirrorDetectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA934DF8178732120001AD46 /* MirrorDetectorView.m */; };
 		FAE35443177A491600DD8A7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE35442177A491600DD8A7D /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,8 @@
 		FA934DEE17872A540001AD46 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Lineman/main.m; sourceTree = SOURCE_ROOT; };
 		FA934DF217872A5D0001AD46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Lineman/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		FA934DF417872A5D0001AD46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Lineman/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		FA934DF7178732120001AD46 /* MirrorDetectorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MirrorDetectorView.h; path = Lineman/MirrorDetectorView.h; sourceTree = SOURCE_ROOT; };
+		FA934DF8178732120001AD46 /* MirrorDetectorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MirrorDetectorView.m; path = Lineman/MirrorDetectorView.m; sourceTree = SOURCE_ROOT; };
 		FAE35442177A491600DD8A7D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -132,6 +135,8 @@
 				FA934DDF17872A160001AD46 /* AppDelegate.m */,
 				FA934DDB178729FE0001AD46 /* Images */,
 				FA84CC2E17727770006377EA /* Supporting Files */,
+				FA934DF7178732120001AD46 /* MirrorDetectorView.h */,
+				FA934DF8178732120001AD46 /* MirrorDetectorView.m */,
 			);
 			name = Lineman;
 			path = TrackpadTest;
@@ -256,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA934DF9178736F50001AD46 /* MirrorDetectorView.m in Sources */,
 				FA934DE717872A380001AD46 /* ViewController.m in Sources */,
 				FA934DE017872A160001AD46 /* AppDelegate.m in Sources */,
 				FA934DF017872A540001AD46 /* main.m in Sources */,
