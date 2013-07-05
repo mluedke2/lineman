@@ -25,25 +25,36 @@
         // Initialization code here.
         [self.view setAcceptsTouchEvents:YES];
         
-        int r = arc4random() % 2;
-        switch (r) {
-            case 0:
-                // make it a standard detectorView
-                NSLog(@"detectorView");
-                break;
-            case 1:
-                // make it a mirror detectorView
-                NSLog(@"mirrorDetectorView");
-               // self.detectorView
-                break;
-            default:
-                break;
-        }
-    
-
     }
     
     return self;
+}
+
+
+-(void)loadView {
+    
+    [super loadView];
+        
+    NSRect frame = self.view.frame;
+    
+    DetectorView *standardDetectorView = [[DetectorView alloc] initWithFrame:frame];
+    MirrorDetectorView *mirrorDetectorView = [[MirrorDetectorView alloc] initWithFrame:frame];
+    
+    // create a view
+    int r = arc4random() % 2;
+    switch (r) {
+        case 0:
+            // initialize a standard detectorView
+            [self.view addSubview:standardDetectorView];
+            break;
+        case 1:
+            // initialize a mirror detectorView
+            [self.view addSubview:mirrorDetectorView];
+            break;
+        default:
+            break;
+    }
+    
 }
 
 @end

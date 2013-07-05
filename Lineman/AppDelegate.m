@@ -22,7 +22,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    // 1. Create the master View Controlle
+    // 1. Create the master View Controller
     self.masterViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     
     // 2. Add the view controller to the Window's content view
@@ -35,7 +35,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-    return [appSupportURL URLByAppendingPathComponent:@"com.upDownInteractive.TrackpadTest"];
+    return [appSupportURL URLByAppendingPathComponent:@"com.upDownInteractive.Lineman"];
 }
 
 // Creates if necessary and returns the managed object model for the application.
@@ -45,7 +45,7 @@
         return _managedObjectModel;
     }
 	
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"TrackpadTest" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Lineman" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -92,7 +92,7 @@
         }
     }
     
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"TrackpadTest.storedata"];
+    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"Lineman.storedata"];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
         [[NSApplication sharedApplication] presentError:error];

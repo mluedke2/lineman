@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>896B3CC1-753C-4DDD-8F06-F2FCF5EE2734</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Lineman</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D9AC45A8-4345-44EF-AC9F-30D3D1D7245A</key>
+		<string>https://github.com/mluedke2/lineman.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Lineman.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D9AC45A8-4345-44EF-AC9F-30D3D1D7245A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mluedke2/lineman.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D9AC45A8-4345-44EF-AC9F-30D3D1D7245A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D9AC45A8-4345-44EF-AC9F-30D3D1D7245A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Lineman</string>
+		</dict>
+	</array>
+</dict>
+</plist>
