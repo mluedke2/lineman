@@ -24,7 +24,7 @@
     NSPoint pt4;
     NSPoint pt5;
     
-    
+    NSColor *lineColor;
     
 }
 
@@ -39,6 +39,8 @@
 @property (nonatomic) NSPoint pt3;
 @property (nonatomic) NSPoint pt4;
 @property (nonatomic) NSPoint pt5;
+
+@property (nonatomic) NSColor *lineColor;
 
 -(void)redefinePts;
 

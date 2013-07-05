@@ -20,6 +20,7 @@
     // now draw lines between the dots!
     drawingPath = [NSBezierPath bezierPath];
     [drawingPath setLineWidth:0.5];
+    [lineColor set];
     
     [drawingPath moveToPoint:pt1];
     
@@ -155,6 +156,7 @@
     pt4 = NSMakePoint((pt4.x * width), (pt4.y * height));
     pt5 = NSMakePoint((pt5.x * width), (pt5.y * height));
     
+    lineColor = [NSColor blueColor];
     
 }
 

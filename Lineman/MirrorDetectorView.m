@@ -38,6 +38,8 @@
     pt3 = NSMakePoint(width-(pt3.x * width), height-(pt3.y * height));
     pt4 = NSMakePoint(width-(pt4.x * width), height-(pt4.y * height));
     pt5 = NSMakePoint(width-(pt5.x * width), height-(pt5.y * height));
+    
+    lineColor = [NSColor redColor];
 
     
 }
