@@ -19,7 +19,7 @@
     
     // now draw lines between the dots!
     drawingPath = [NSBezierPath bezierPath];
-    [drawingPath setLineWidth:2.0];
+    [drawingPath setLineWidth:0.5];
     
     [drawingPath moveToPoint:pt1];
     
@@ -101,17 +101,14 @@
         
         NSArray *array = [touches allObjects];
         
-        NSPoint rawPt1 = [[array objectAtIndex:0] normalizedPosition];
-        NSPoint rawPt2 = [[array objectAtIndex:1] normalizedPosition];
-        NSPoint rawPt3 = [[array objectAtIndex:2] normalizedPosition];
-        NSPoint rawPt4 = [[array objectAtIndex:3] normalizedPosition];
-        NSPoint rawPt5 = [[array objectAtIndex:4] normalizedPosition];
-                
-        float width = [[array objectAtIndex:0] deviceSize].width;
-        float height = [[array objectAtIndex:0] deviceSize].height;
+        pt1 = [[array objectAtIndex:0] normalizedPosition];
+        pt2 = [[array objectAtIndex:1] normalizedPosition];
+        pt3 = [[array objectAtIndex:2] normalizedPosition];
+        pt4 = [[array objectAtIndex:3] normalizedPosition];
+        pt5 = [[array objectAtIndex:4] normalizedPosition];
         
         // redefine the points we really want!
-        [self redefinePt1:rawPt1 andPt2:rawPt2 andPt3:rawPt3 andPt4:rawPt4 andPt5:rawPt5 forScreenWidth:width andHeight:height];
+        [self redefinePts];
     
         // make things appear!
         self.dot1 = [[NSImageView alloc] init];
@@ -145,15 +142,18 @@
    
 }
 
--(void)redefinePt1:(NSPoint)rawPt1 andPt2:(NSPoint)rawPt2 andPt3:(NSPoint)rawPt3 andPt4:(NSPoint)rawPt4 andPt5:(NSPoint)rawPt5 forScreenWidth:(float)width andHeight:(float)height {
+-(void)redefinePts {
     
-    NSLog(@"detector view redefining points");
+    NSLog(@"standard detector view redefining points");
+    
+    float height = self.window.frame.size.height;
+    float width = self.window.frame.size.width;
         
-    pt1 = NSMakePoint((rawPt1.x * width), (rawPt1.y * height));
-    pt2 = NSMakePoint((rawPt2.x * width), (rawPt2.y * height));
-    pt3 = NSMakePoint((rawPt3.x * width), (rawPt3.y * height));
-    pt4 = NSMakePoint((rawPt4.x * width), (rawPt4.y * height));
-    pt5 = NSMakePoint((rawPt5.x * width), (rawPt5.y * height));
+    pt1 = NSMakePoint((pt1.x * width), (pt1.y * height));
+    pt2 = NSMakePoint((pt2.x * width), (pt2.y * height));
+    pt3 = NSMakePoint((pt3.x * width), (pt3.y * height));
+    pt4 = NSMakePoint((pt4.x * width), (pt4.y * height));
+    pt5 = NSMakePoint((pt5.x * width), (pt5.y * height));
     
     
 }

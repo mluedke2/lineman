@@ -8,15 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class DetectorView;
-@class MirrorDetectorView;
-
-@interface ViewController : NSViewController {
-    
-    IBOutlet DetectorView *detectorView;
-       
-}
-
-@property (strong, nonatomic) IBOutlet DetectorView *detectorView;
+@interface ViewController : NSViewController
 
 @end

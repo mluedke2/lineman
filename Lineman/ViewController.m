@@ -16,8 +16,6 @@
 
 @implementation ViewController
 
-@synthesize detectorView;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,10 +28,31 @@
     return self;
 }
 
+-(void)resize:(NSNotification *)notif {
+    
+    [self.view setFrame:NSMakeRect([[notif.userInfo objectForKey:@"x"] floatValue], [[notif.userInfo objectForKey:@"y"] floatValue], [[notif.userInfo objectForKey:@"w"] floatValue], [[notif.userInfo objectForKey:@"h"] floatValue])];
+    
+    for (NSView *subview in self.view.subviews)
+    {
+        [subview setFrame:self.view.frame];
+        if([subview.class isSubclassOfClass:[DetectorView class]]){
+            DetectorView *detectorView = (DetectorView *)subview;
+            [detectorView redefinePts];
+            [detectorView setNeedsDisplay:YES];
+        }
+    }
+    
+    // recreate the points!
+    
+//    NSLog(@"resized to: height:%.2f, width: %.2f", [[notif.userInfo objectForKey:@"height"] floatValue], [[notif.userInfo objectForKey:@"width"] floatValue]);
+    
+}
 
 -(void)loadView {
     
     [super loadView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resize:) name:@"window_resized" object:nil];
         
     NSRect frame = self.view.frame;
     

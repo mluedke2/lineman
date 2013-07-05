@@ -23,12 +23,34 @@
 {
     // Insert code here to initialize your application
     // 1. Create the master View Controller
+    
+    
+    [self.window setDelegate:self];
+    
     self.masterViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     
     // 2. Add the view controller to the Window's content view
     [self.window.contentView addSubview:self.masterViewController.view];
+    
+    NSRect zWindowRect = [[self window]frame];
+    NSRect zContentRect = [[self window]contentRectForFrameRect:zWindowRect];
+    NSRect zRectOfView = NSMakeRect(0.0,0.0,zContentRect.size.width,
+                                    zContentRect.size.height);
+    
     self.masterViewController.view.frame = ((NSView*)self.window.contentView).bounds;
 }
+
+- (void)windowDidResize:(NSNotification *)notification {
+    
+    NSRect zWindowRect = [[self window]frame];
+    NSRect zContentRect = [[self window]contentRectForFrameRect:zWindowRect];
+    NSRect zRectOfView = NSMakeRect(0.0,0.0,zContentRect.size.width,
+                                    zContentRect.size.height);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"window_resized" object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:zRectOfView.size.height], @"h", [NSNumber numberWithFloat:zRectOfView.size.width], @"w", [NSNumber numberWithFloat:zRectOfView.origin.x], @"x", [NSNumber numberWithFloat:zRectOfView.origin.y], @"y", nil]];
+        
+}
+
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.upDownInteractive.TrackpadTest" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory

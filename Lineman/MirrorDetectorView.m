@@ -26,14 +26,19 @@
     [super drawRect:dirtyRect];
 }
 
--(void)redefinePt1:(NSPoint)rawPt1 andPt2:(NSPoint)rawPt2 andPt3:(NSPoint)rawPt3 andPt4:(NSPoint)rawPt4 andPt5:(NSPoint)rawPt5 forScreenWidth:(float)width andHeight:(float)height {
-        
-    pt1 = NSMakePoint((rawPt1.x * width), (rawPt1.y * height));
-    pt2 = NSMakePoint((rawPt2.x * width), (rawPt2.y * height));
-    pt3 = NSMakePoint((rawPt3.x * width), (rawPt3.y * height));
-    pt4 = NSMakePoint((rawPt4.x * width), (rawPt4.y * height));
-    pt5 = NSMakePoint((rawPt5.x * width), (rawPt5.y * height));
+-(void)redefinePts {
     
+    NSLog(@"mirror detector");
+    
+    float height = self.window.frame.size.height;
+    float width = self.window.frame.size.width;
+        
+    pt1 = NSMakePoint(width-(pt1.x * width), height-(pt1.y * height));
+    pt2 = NSMakePoint(width-(pt2.x * width), height-(pt2.y * height));
+    pt3 = NSMakePoint(width-(pt3.x * width), height-(pt3.y * height));
+    pt4 = NSMakePoint(width-(pt4.x * width), height-(pt4.y * height));
+    pt5 = NSMakePoint(width-(pt5.x * width), height-(pt5.y * height));
+
     
 }
 
