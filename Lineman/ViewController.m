@@ -15,6 +15,7 @@
 @end
 
 @implementation ViewController
+@synthesize attackDot1, attackDot1Movement;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,11 +35,16 @@
     
     for (NSView *subview in self.view.subviews)
     {
-        [subview setFrame:self.view.frame];
         if([subview.class isSubclassOfClass:[DetectorView class]]){
+            [subview setFrame:self.view.frame];
             DetectorView *detectorView = (DetectorView *)subview;
             [detectorView redefinePts];
             [detectorView setNeedsDisplay:YES];
+        }
+        else if([subview.class isSubclassOfClass:[NSImageView class]]){
+            NSRect imageFrame = subview.frame;
+            imageFrame.origin = self.view.frame.origin;
+            [subview setFrame:imageFrame];
         }
     }
     
@@ -73,6 +79,89 @@
         default:
             break;
     }
+    
+    
+    [self.attackDot1 setFrame:NSMakeRect(frame.origin.x, frame.origin.y, 30, 30)];
+    
+    NSLog(@"origin x:%.2f, y: %.2f", attackDot1.frame.origin.x, attackDot1.frame.origin.y);
+    
+    [self initializeTimer];
+    
+}
+
+
+-(void)initializeTimer {
+    
+    attackDot1Movement = CGPointMake(1.0, 1.0);
+    
+    float theInterval = 1.0/60.0;
+    theTimer = [NSTimer scheduledTimerWithTimeInterval:theInterval target:self selector:@selector(ballMovementLogic) userInfo:nil repeats:YES];
+    
+}
+
+-(void)ballMovementLogic {
+    
+    NSRect newFrame = attackDot1.frame;
+    newFrame.origin = CGPointMake(attackDot1.frame.origin.x + attackDot1Movement.x, attackDot1.frame.origin.y + attackDot1Movement.y);
+     
+    [attackDot1 setFrame:newFrame];
+    
+    /*
+     
+     // collision with line 
+     // hopefully we can access the line?
+     
+    // maybe use: http://makemacgames.com/2005/10/24/collision-detection-with-cocoa/
+     
+     BOOL attackDotCollision = ball.center.y >= paddle.center.y - 32 && ball.center.y <=paddle.center.y + 32 && ball.center.x > paddle.center.x - 120 && ball.center.x < paddle.center.x + 120;
+     
+     if (paddleCollision) {
+     
+     ballMovement.y = -ballMovement.y;
+     
+     if (ball.center.y >= paddle.center.y - 32 && ballMovement.y < 0) {
+     ball.center = CGPointMake(ball.center.x, paddle.center.y- 32);
+     }
+     else if (ball.center.y <= paddle.center.y + 32 && ballMovement.y >0) {
+     ball.center = CGPointMake(ball.center.x, paddle.center.y + 32);
+     }
+     else if (ball.center.x >= paddle.center.x - 120 && ballMovement.x < 0) {
+     ball.center = CGPointMake(paddle.center.x - 120, ball.center.y);
+     }
+     else if (ball.center.x <= paddle.center.x + 120 && ballMovement.x > 0) {
+     ball.center = CGPointMake(paddle.center.x + 120, ball.center.y);
+     }
+     
+     }
+     */
+    
+    // window edge collision
+     
+     if ((attackDot1.frame.origin.x + attackDot1.frame.size.width) > (self.view.frame.origin.x + self.view.frame.size.width) || attackDot1.frame.origin.x < self.view.frame.origin.x) {
+     attackDot1Movement.x = -attackDot1Movement.x;
+     }
+     
+     if (attackDot1.frame.origin.y < self.view.frame.origin.y || (attackDot1.frame.origin.y + attackDot1.frame.size.height) > (self.view.frame.origin.y + self.view.frame.size.height)) {
+     attackDot1Movement.y = -attackDot1Movement.y;
+     }
+    
+     /*
+     if (ball.center.y > 568) {
+     [self pauseGame];
+     isPlaying = NO;
+     lives--;
+     livesLabel.text = [NSString stringWithFormat:@"Lives: %i", lives];
+     
+     if(!lives) {
+     messageLabel.text = @"Game Over";
+     } else {
+     messageLabel.text = @"Ball Out of Bounds";
+     }
+     messageLabel.hidden = NO;
+     }
+
+     
+     */
     
 }
 

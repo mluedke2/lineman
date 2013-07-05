@@ -36,6 +36,8 @@
     [drawingPath lineToPoint:pt1];
     
     [drawingPath stroke];
+    
+    lineRect = [drawingPath bounds];
 }
 
 

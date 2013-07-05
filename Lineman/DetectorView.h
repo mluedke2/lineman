@@ -26,6 +26,7 @@
     
     NSColor *lineColor;
     
+    NSRect lineRect;
 }
 
 @property (strong, nonatomic) NSImageView *dot1;

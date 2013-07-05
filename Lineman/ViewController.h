@@ -8,6 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController {
+    
+    IBOutlet NSImageView *attackDot1;
+    CGPoint attackDot1Movement;
+        
+    NSTimer *theTimer;
+    
+}
+@property (nonatomic) CGPoint attackDot1Movement;
+@property (strong, nonatomic) IBOutlet NSImageView *attackDot1;
+
+-(void)initializeTimer;
+-(void)ballMovementLogic;
+
 
 @end

@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="attackDot1" destination="iEx-gO-UGH" id="u1l-iN-oqV"/>
                 <outlet property="view" destination="1" id="CDv-j7-bpu"/>
             </connections>
         </customObject>
@@ -15,11 +16,16 @@
         <customView focusRingType="exterior" id="1">
             <rect key="frame" x="0.0" y="0.0" width="480" height="479"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iEx-gO-UGH">
+                    <rect key="frame" x="152" y="218" width="42" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="stat_happy" id="0FW-h6-JQ7"/>
+                </imageView>
+            </subviews>
         </customView>
     </objects>
-    <classes>
-        <class className="ViewController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
+    <resources>
+        <image name="stat_happy" width="16" height="16"/>
+    </resources>
 </document>
