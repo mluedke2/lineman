@@ -10,6 +10,7 @@
 
 @implementation DotMaster
 @synthesize dot;
+@synthesize attackDot1Movement;
 
 + (DotMaster*)dotMaster
 {

@@ -11,6 +11,7 @@
 @interface DotMaster : NSObject
 
 @property (strong, nonatomic) NSImageView *dot;
+@property (nonatomic) CGPoint attackDot1Movement;
 
 + (DotMaster*)dotMaster;
 

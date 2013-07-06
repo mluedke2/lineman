@@ -28,8 +28,6 @@
 
 -(void)redefinePts {
     
-    NSLog(@"mirror detector");
-    
     float height = self.window.frame.size.height;
     float width = self.window.frame.size.width;
         

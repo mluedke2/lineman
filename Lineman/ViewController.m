@@ -16,7 +16,6 @@
 @end
 
 @implementation ViewController
-@synthesize attackDot1Movement;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,8 +94,8 @@
 
 
 -(void)initializeTimer {
-    
-    attackDot1Movement = CGPointMake(1.0, 1.0);
+    DotMaster *dotMaster = [DotMaster dotMaster];
+    dotMaster.attackDot1Movement = CGPointMake(1.0, 1.0);
     
     float theInterval = 1.0/60.0;
     theTimer = [NSTimer scheduledTimerWithTimeInterval:theInterval target:self selector:@selector(ballMovementLogic) userInfo:nil repeats:YES];
@@ -108,7 +107,7 @@
     DotMaster *dotMaster = [DotMaster dotMaster];
     
     NSRect newFrame = dotMaster.dot.frame;
-    newFrame.origin = CGPointMake(dotMaster.dot.frame.origin.x + attackDot1Movement.x, dotMaster.dot.frame.origin.y + attackDot1Movement.y);
+    newFrame.origin = CGPointMake(dotMaster.dot.frame.origin.x + dotMaster.attackDot1Movement.x, dotMaster.dot.frame.origin.y + dotMaster.attackDot1Movement.y);
      
     [dotMaster.dot setFrame:newFrame];
     
@@ -159,11 +158,15 @@
     // window edge collision
      
      if ((dotMaster.dot.frame.origin.x + dotMaster.dot.frame.size.width) > (self.view.frame.origin.x + self.view.frame.size.width) || dotMaster.dot.frame.origin.x < self.view.frame.origin.x) {
-     attackDot1Movement.x = -attackDot1Movement.x;
+         CGPoint newDirections = dotMaster.attackDot1Movement;
+         newDirections.x = -dotMaster.attackDot1Movement.x;
+         dotMaster.attackDot1Movement = newDirections;
      }
      
      if (dotMaster.dot.frame.origin.y < self.view.frame.origin.y || (dotMaster.dot.frame.origin.y + dotMaster.dot.frame.size.height) > (self.view.frame.origin.y + self.view.frame.size.height)) {
-     attackDot1Movement.y = -attackDot1Movement.y;
+         CGPoint newDirections = dotMaster.attackDot1Movement;
+         newDirections.y = -dotMaster.attackDot1Movement.y;
+         dotMaster.attackDot1Movement = newDirections;
      }
     
      /*

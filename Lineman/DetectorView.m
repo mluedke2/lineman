@@ -53,10 +53,19 @@
     CGContextAddLineToPoint(c, pt2.x, pt2.y);
     CGContextAddLineToPoint(c, pt4.x, pt4.y);
     CGContextAddLineToPoint(c, pt1.x, pt1.y);
+    
+    
+    DotMaster *dotMaster = [DotMaster dotMaster];
+    if (CGContextPathContainsPoint(c, dotMaster.dot.frame.origin, kCGPathFillStroke)){
+
+        NSLog(@"collide!");
+        CGPoint newDirections = dotMaster.attackDot1Movement;
+        newDirections.x = -dotMaster.attackDot1Movement.x;
+        dotMaster.attackDot1Movement = newDirections;
+    }
+    
     CGContextStrokePath(c);
     
-    DotMaster *dotmaster = [DotMaster dotMaster];
-  //  if (
 }
 
 
@@ -139,9 +148,7 @@
 }
 
 -(void)redefinePts {
-    
-    NSLog(@"standard detector view redefining points");
-    
+        
     float height = self.window.frame.size.height;
     float width = self.window.frame.size.width;
         
