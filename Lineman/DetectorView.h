@@ -27,6 +27,9 @@
     NSColor *lineColor;
     
     NSRect lineRect;
+    
+    int incomingXDir;
+    int incomingYDir;
 }
 
 @property (strong, nonatomic) NSImageView *dot1;
@@ -44,6 +47,9 @@
 @property (nonatomic) NSColor *lineColor;
 
 @property (nonatomic) NSRect lineRect;
+
+@property (nonatomic) int incomingXDir;
+@property (nonatomic) int incomingYDir;
 
 -(void)redefinePts;
 - (void)drawDots;

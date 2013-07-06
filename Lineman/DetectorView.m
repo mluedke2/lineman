@@ -2,6 +2,7 @@
 #import "DotMaster.h"
 
 @implementation DetectorView
+@synthesize incomingXDir, incomingYDir;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -10,6 +11,8 @@
         // Initialization code here.
                 
         [self setAcceptsTouchEvents:YES];
+        incomingXDir = 0;
+        incomingYDir = 0;
     }
     
     return self;
@@ -59,19 +62,59 @@
     // find center
     CGPoint center = CGPointMake((dotMaster.dot.frame.origin.x + dotMaster.dot.frame.size.width/2), (dotMaster.dot.frame.origin.y + dotMaster.dot.frame.size.height/2));
     
-    if (CGContextPathContainsPoint(c, dotMaster.dot.frame.origin, kCGPathFillStroke)){
+    float acceleration = -1.01;
+    
+    if (CGContextPathContainsPoint(c, center, kCGPathFillStroke)){
 
         NSLog(@"collide!");
         CGPoint newDirections = dotMaster.attackDot1Movement;
         
-        newDirections.x += 1;
-        newDirections.y += 1;
-//        newDirections.y = -newDirections.y;
+        if (incomingXDir == 0) {
+            if (newDirections.x > 0) {
+                incomingXDir = 1;
+            } else if (newDirections.x < 0) {
+                incomingXDir = -1;
+            }
+        }
+        
+        if (incomingYDir == 0) {
+            if (newDirections.y > 0) {
+                incomingYDir = 1;
+            } else if (newDirections.y< 0) {
+                incomingYDir = -1;
+            }
+        }
+        
+        if (incomingXDir == 1) {
+            newDirections.x *= acceleration;
+        }
+        
+        if (incomingXDir == -1) {
+            newDirections.x *= acceleration;
+        }
+        
+        if (incomingYDir == 1) {
+            newDirections.y *= acceleration;
+        }
+        
+        if (incomingYDir == -1) {
+            newDirections.y *= acceleration;
+        }
+        
         
         dotMaster.attackDot1Movement = newDirections;
+        
+    } else {
+        if(incomingXDir != 0){
+        incomingXDir = 0;
+        } if (incomingYDir !=0){
+        incomingYDir = 0;
+        }
     }
     
     CGContextStrokePath(c);
+    
+    NSLog(@"xdir: %i, ydir: %i", incomingXDir, incomingYDir);
     
 }
 
