@@ -43,6 +43,9 @@
 
 @property (nonatomic) NSColor *lineColor;
 
+@property (nonatomic) NSRect lineRect;
+
 -(void)redefinePts;
+- (void)drawDots;
 
 @end

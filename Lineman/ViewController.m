@@ -37,7 +37,7 @@
     {
         if([subview.class isSubclassOfClass:[DetectorView class]]){
             [subview setFrame:self.view.frame];
-            DetectorView *detectorView = (DetectorView *)subview;
+            detectorView = (DetectorView *)subview;
             [detectorView redefinePts];
             [detectorView setNeedsDisplay:YES];
         }
@@ -70,23 +70,23 @@
     switch (r) {
         case 0:
             // initialize a standard detectorView
-            [self.view addSubview:standardDetectorView];
+            detectorView = standardDetectorView;
+            [self.view addSubview:detectorView];
             break;
         case 1:
             // initialize a mirror detectorView
-            [self.view addSubview:mirrorDetectorView];
+            detectorView = mirrorDetectorView;
+            [self.view addSubview:detectorView];
             break;
         default:
             break;
     }
     
+    // TODO: find out why the ball starts off the screen, if anywhere at all? it seems like the y value is way too low!!!
     
-    [self.attackDot1 setFrame:NSMakeRect(frame.origin.x, frame.origin.y, 30, 30)];
-    
-    NSLog(@"origin x:%.2f, y: %.2f", attackDot1.frame.origin.x, attackDot1.frame.origin.y);
+    [self.attackDot1 setFrame:NSMakeRect(31, 31, 30, 30)];
     
     [self initializeTimer];
-    
 }
 
 
@@ -106,12 +106,25 @@
      
     [attackDot1 setFrame:newFrame];
     
-    /*
-     
+    
+    //  NSLog(@"lineRect2:%.2f,%.2f,%.2f,%.2f", detectorView.lineRect.origin.x, detectorView.lineRect.origin.y, detectorView.lineRect.size.height, detectorView.lineRect.size.width);
+    
      // collision with line 
      // hopefully we can access the line?
      
     // maybe use: http://makemacgames.com/2005/10/24/collision-detection-with-cocoa/
+    
+    NSRect collisionRect = NSIntersectionRect(detectorView.lineRect, attackDot1.frame);
+    
+   // NSLog(@"collision logic:lineRect=%.2f,%.2f,%.2f,%.2f and collisionRect=%.2f,%.2f,%.2f,%.2f", detectorView.lineRect.origin.x, detectorView.lineRect.origin.y, detectorView.lineRect.size.height, detectorView.lineRect.size.width, attackDot1.frame.origin.x, attackDot1.frame.origin.y, attackDot1.frame.size.width, attackDot1.frame.size.height);
+    
+    if ( !NSIsEmptyRect(collisionRect) ) {
+        // collision!
+        attackDot1Movement.x = -attackDot1Movement.x;
+        attackDot1Movement.y = -attackDot1Movement.y;
+    }
+    
+    /*
      
      BOOL attackDotCollision = ball.center.y >= paddle.center.y - 32 && ball.center.y <=paddle.center.y + 32 && ball.center.x > paddle.center.x - 120 && ball.center.x < paddle.center.x + 120;
      

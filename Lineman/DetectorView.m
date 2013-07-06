@@ -16,7 +16,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    
+    /*
     // now draw lines between the dots!
     drawingPath = [NSBezierPath bezierPath];
     [drawingPath setLineWidth:0.5];
@@ -36,8 +36,23 @@
     [drawingPath lineToPoint:pt1];
     
     [drawingPath stroke];
-    
-    lineRect = [drawingPath bounds];
+    */
+        
+    CGContextRef c = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetStrokeColorWithColor(c, lineColor.CGColor);
+    CGContextBeginPath(c);
+    CGContextMoveToPoint(c, pt1.x, pt1.y);
+    CGContextAddLineToPoint(c, pt2.x, pt2.y);
+    CGContextAddLineToPoint(c, pt3.x, pt3.y);
+    CGContextAddLineToPoint(c, pt4.x, pt4.y);
+    CGContextAddLineToPoint(c, pt5.x, pt5.y);
+    CGContextAddLineToPoint(c, pt1.x, pt1.y);
+    CGContextAddLineToPoint(c, pt3.x, pt3.y);
+    CGContextAddLineToPoint(c, pt5.x, pt5.y);
+    CGContextAddLineToPoint(c, pt2.x, pt2.y);
+    CGContextAddLineToPoint(c, pt4.x, pt4.y);
+    CGContextAddLineToPoint(c, pt1.x, pt1.y);
+    CGContextStrokePath(c);
 }
 
 
@@ -47,7 +62,7 @@
     
     [self clearDots];
     
-    [self drawDots:event];
+    [self getPoints:event];
     
 }
 
@@ -57,7 +72,7 @@
     
     [self clearDots];
     
-    [self drawDots:event];
+    [self getPoints:event];
     
 }
 
@@ -95,7 +110,7 @@
     [self setNeedsDisplay:YES];
 }
 
-- (void)drawDots:(NSEvent *)event {
+- (void)getPoints:(NSEvent *)event {
         
     NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self];
     
@@ -113,33 +128,7 @@
         // redefine the points we really want!
         [self redefinePts];
     
-        // make things appear!
-        self.dot1 = [[NSImageView alloc] init];
-        [self.dot1 setFrame:NSRectFromCGRect(CGRectMake((pt1.x-8), (pt1.y-8), 16, 16))];
-        [self.dot1 setImage:[NSImage imageNamed:@"mapPin"]];
-        [self addSubview:self.dot1];
-        
-        self.dot2 = [[NSImageView alloc] init];
-        [self.dot2 setFrame:NSRectFromCGRect(CGRectMake((pt2.x-8), (pt2.y-8), 16, 16))];
-        [self.dot2 setImage:[NSImage imageNamed:@"mapPin"]];
-        [self addSubview:self.dot2];
-        
-        self.dot3 = [[NSImageView alloc] init];
-        [self.dot3 setFrame:NSRectFromCGRect(CGRectMake((pt3.x-8), (pt3.y-8), 16, 16))];
-        [self.dot3 setImage:[NSImage imageNamed:@"mapPin"]];
-        [self addSubview:self.dot3];
-        
-        self.dot4 = [[NSImageView alloc] init];
-        [self.dot4 setFrame:NSRectFromCGRect(CGRectMake((pt4.x-8), (pt4.y-8), 16, 16))];
-        [self.dot4 setImage:[NSImage imageNamed:@"mapPin"]];
-        [self addSubview:self.dot4];
-        
-        self.dot5 = [[NSImageView alloc] init];
-        [self.dot5 setFrame:NSRectFromCGRect(CGRectMake((pt5.x-8), (pt5.y-8), 16, 16))];
-        [self.dot5 setImage:[NSImage imageNamed:@"mapPin"]];
-        [self addSubview:self.dot5];
-        
-        [self setNeedsDisplay:YES];
+
                 
     }
    
@@ -160,6 +149,38 @@
     
     lineColor = [NSColor blueColor];
     
+    [self drawDots];
+    
+}
+
+- (void)drawDots {
+    // make things appear!
+    self.dot1 = [[NSImageView alloc] init];
+    [self.dot1 setFrame:NSRectFromCGRect(CGRectMake((pt1.x-8), (pt1.y-8), 16, 16))];
+    [self.dot1 setImage:[NSImage imageNamed:@"mapPin"]];
+    [self addSubview:self.dot1];
+    
+    self.dot2 = [[NSImageView alloc] init];
+    [self.dot2 setFrame:NSRectFromCGRect(CGRectMake((pt2.x-8), (pt2.y-8), 16, 16))];
+    [self.dot2 setImage:[NSImage imageNamed:@"mapPin"]];
+    [self addSubview:self.dot2];
+    
+    self.dot3 = [[NSImageView alloc] init];
+    [self.dot3 setFrame:NSRectFromCGRect(CGRectMake((pt3.x-8), (pt3.y-8), 16, 16))];
+    [self.dot3 setImage:[NSImage imageNamed:@"mapPin"]];
+    [self addSubview:self.dot3];
+    
+    self.dot4 = [[NSImageView alloc] init];
+    [self.dot4 setFrame:NSRectFromCGRect(CGRectMake((pt4.x-8), (pt4.y-8), 16, 16))];
+    [self.dot4 setImage:[NSImage imageNamed:@"mapPin"]];
+    [self addSubview:self.dot4];
+    
+    self.dot5 = [[NSImageView alloc] init];
+    [self.dot5 setFrame:NSRectFromCGRect(CGRectMake((pt5.x-8), (pt5.y-8), 16, 16))];
+    [self.dot5 setImage:[NSImage imageNamed:@"mapPin"]];
+    [self addSubview:self.dot5];
+    
+    [self setNeedsDisplay:YES];
 }
 
 @end

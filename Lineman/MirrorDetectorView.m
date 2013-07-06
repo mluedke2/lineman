@@ -40,7 +40,8 @@
     pt5 = NSMakePoint(width-(pt5.x * width), height-(pt5.y * height));
     
     lineColor = [NSColor redColor];
-
+    
+    [super drawDots];
     
 }
 

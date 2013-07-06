@@ -8,12 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class DetectorView;
+
 @interface ViewController : NSViewController {
     
     IBOutlet NSImageView *attackDot1;
     CGPoint attackDot1Movement;
         
     NSTimer *theTimer;
+    
+    DetectorView *detectorView;
     
 }
 @property (nonatomic) CGPoint attackDot1Movement;
