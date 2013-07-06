@@ -56,11 +56,18 @@
     
     
     DotMaster *dotMaster = [DotMaster dotMaster];
+    // find center
+    CGPoint center = CGPointMake((dotMaster.dot.frame.origin.x + dotMaster.dot.frame.size.width/2), (dotMaster.dot.frame.origin.y + dotMaster.dot.frame.size.height/2));
+    
     if (CGContextPathContainsPoint(c, dotMaster.dot.frame.origin, kCGPathFillStroke)){
 
         NSLog(@"collide!");
         CGPoint newDirections = dotMaster.attackDot1Movement;
-        newDirections.x = -dotMaster.attackDot1Movement.x;
+        
+        newDirections.x += 1;
+        newDirections.y += 1;
+//        newDirections.y = -newDirections.y;
+        
         dotMaster.attackDot1Movement = newDirections;
     }
     
