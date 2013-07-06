@@ -56,7 +56,7 @@
     CGContextStrokePath(c);
     
     DotMaster *dotmaster = [DotMaster dotMaster];
-    
+  //  if (
 }
 
 

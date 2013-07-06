@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA11706D178777DA00F0A316 /* stat_happy.png in Resources */ = {isa = PBXBuildFile; fileRef = FA11706C178777DA00F0A316 /* stat_happy.png */; };
 		FA1170701787A58300F0A316 /* DotMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = FA11706F1787A50500F0A316 /* DotMaster.m */; };
+		FA1170721787A99E00F0A316 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1170711787A99E00F0A316 /* QuartzCore.framework */; };
 		FA84CC2817727770006377EA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84CC2717727770006377EA /* Cocoa.framework */; };
 		FA84CC4A17727770006377EA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84CC4917727770006377EA /* XCTest.framework */; };
 		FA84CC4B17727770006377EA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84CC2717727770006377EA /* Cocoa.framework */; };
@@ -40,6 +41,7 @@
 		FA11706C178777DA00F0A316 /* stat_happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stat_happy.png; sourceTree = SOURCE_ROOT; };
 		FA11706E1787A50500F0A316 /* DotMaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DotMaster.h; path = Lineman/DotMaster.h; sourceTree = SOURCE_ROOT; };
 		FA11706F1787A50500F0A316 /* DotMaster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DotMaster.m; path = Lineman/DotMaster.m; sourceTree = SOURCE_ROOT; };
+		FA1170711787A99E00F0A316 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA84CC2417727770006377EA /* Lineman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lineman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA84CC2717727770006377EA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FA84CC2A17727770006377EA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1170721787A99E00F0A316 /* QuartzCore.framework in Frameworks */,
 				FAE35443177A491600DD8A7D /* CoreGraphics.framework in Frameworks */,
 				FA84CC2817727770006377EA /* Cocoa.framework in Frameworks */,
 			);
@@ -109,6 +112,7 @@
 		FA84CC2617727770006377EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA1170711787A99E00F0A316 /* QuartzCore.framework */,
 				FAE35442177A491600DD8A7D /* CoreGraphics.framework */,
 				FA84CC2717727770006377EA /* Cocoa.framework */,
 				FA84CC4917727770006377EA /* XCTest.framework */,
