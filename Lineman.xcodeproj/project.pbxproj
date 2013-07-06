@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA11706D178777DA00F0A316 /* stat_happy.png in Resources */ = {isa = PBXBuildFile; fileRef = FA11706C178777DA00F0A316 /* stat_happy.png */; };
+		FA1170701787A58300F0A316 /* DotMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = FA11706F1787A50500F0A316 /* DotMaster.m */; };
 		FA84CC2817727770006377EA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84CC2717727770006377EA /* Cocoa.framework */; };
 		FA84CC4A17727770006377EA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84CC4917727770006377EA /* XCTest.framework */; };
 		FA84CC4B17727770006377EA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84CC2717727770006377EA /* Cocoa.framework */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		FA11706C178777DA00F0A316 /* stat_happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stat_happy.png; sourceTree = SOURCE_ROOT; };
+		FA11706E1787A50500F0A316 /* DotMaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DotMaster.h; path = Lineman/DotMaster.h; sourceTree = SOURCE_ROOT; };
+		FA11706F1787A50500F0A316 /* DotMaster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DotMaster.m; path = Lineman/DotMaster.m; sourceTree = SOURCE_ROOT; };
 		FA84CC2417727770006377EA /* Lineman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lineman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA84CC2717727770006377EA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FA84CC2A17727770006377EA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 				FA84CC2E17727770006377EA /* Supporting Files */,
 				FA934DF7178732120001AD46 /* MirrorDetectorView.h */,
 				FA934DF8178732120001AD46 /* MirrorDetectorView.m */,
+				FA11706E1787A50500F0A316 /* DotMaster.h */,
+				FA11706F1787A50500F0A316 /* DotMaster.m */,
 			);
 			name = Lineman;
 			path = TrackpadTest;
@@ -265,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1170701787A58300F0A316 /* DotMaster.m in Sources */,
 				FA934DF9178736F50001AD46 /* MirrorDetectorView.m in Sources */,
 				FA934DE717872A380001AD46 /* ViewController.m in Sources */,
 				FA934DE017872A160001AD46 /* AppDelegate.m in Sources */,

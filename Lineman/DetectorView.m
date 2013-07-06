@@ -1,4 +1,5 @@
 #import "DetectorView.h"
+#import "DotMaster.h"
 
 @implementation DetectorView
 
@@ -53,6 +54,9 @@
     CGContextAddLineToPoint(c, pt4.x, pt4.y);
     CGContextAddLineToPoint(c, pt1.x, pt1.y);
     CGContextStrokePath(c);
+    
+    DotMaster *dotmaster = [DotMaster dotMaster];
+    
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DotMaster.h"
 #import "DetectorView.h"
 #import "MirrorDetectorView.h"
 
@@ -15,7 +16,7 @@
 @end
 
 @implementation ViewController
-@synthesize attackDot1, attackDot1Movement;
+@synthesize attackDot1Movement;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -83,8 +84,11 @@
     }
     
     // TODO: find out why the ball starts off the screen, if anywhere at all? it seems like the y value is way too low!!!
-    
-    [self.attackDot1 setFrame:NSMakeRect(31, 31, 30, 30)];
+    DotMaster *dotMaster = [DotMaster dotMaster];
+    dotMaster.dot = [[NSImageView alloc] initWithFrame:NSMakeRect(31, 31, 30, 30)];
+    [dotMaster.dot setImage:[NSImage imageNamed:@"stat_happy.png"]];
+    [self.view addSubview:dotMaster.dot];
+    //[self.attackDot1 setFrame:NSMakeRect(31, 31, 30, 30)];
     
     [self initializeTimer];
 }
@@ -101,10 +105,12 @@
 
 -(void)ballMovementLogic {
     
-    NSRect newFrame = attackDot1.frame;
-    newFrame.origin = CGPointMake(attackDot1.frame.origin.x + attackDot1Movement.x, attackDot1.frame.origin.y + attackDot1Movement.y);
+    DotMaster *dotMaster = [DotMaster dotMaster];
+    
+    NSRect newFrame = dotMaster.dot.frame;
+    newFrame.origin = CGPointMake(dotMaster.dot.frame.origin.x + attackDot1Movement.x, dotMaster.dot.frame.origin.y + attackDot1Movement.y);
      
-    [attackDot1 setFrame:newFrame];
+    [dotMaster.dot setFrame:newFrame];
     
     
     //  NSLog(@"lineRect2:%.2f,%.2f,%.2f,%.2f", detectorView.lineRect.origin.x, detectorView.lineRect.origin.y, detectorView.lineRect.size.height, detectorView.lineRect.size.width);
@@ -114,15 +120,17 @@
      
     // maybe use: http://makemacgames.com/2005/10/24/collision-detection-with-cocoa/
     
-    NSRect collisionRect = NSIntersectionRect(detectorView.lineRect, attackDot1.frame);
+ //   NSRect collisionRect = NSIntersectionRect(detectorView.lineRect, attackDot1.frame);
     
    // NSLog(@"collision logic:lineRect=%.2f,%.2f,%.2f,%.2f and collisionRect=%.2f,%.2f,%.2f,%.2f", detectorView.lineRect.origin.x, detectorView.lineRect.origin.y, detectorView.lineRect.size.height, detectorView.lineRect.size.width, attackDot1.frame.origin.x, attackDot1.frame.origin.y, attackDot1.frame.size.width, attackDot1.frame.size.height);
-    
+   
+    /*
     if ( !NSIsEmptyRect(collisionRect) ) {
         // collision!
         attackDot1Movement.x = -attackDot1Movement.x;
         attackDot1Movement.y = -attackDot1Movement.y;
     }
+     */
     
     /*
      
@@ -150,11 +158,11 @@
     
     // window edge collision
      
-     if ((attackDot1.frame.origin.x + attackDot1.frame.size.width) > (self.view.frame.origin.x + self.view.frame.size.width) || attackDot1.frame.origin.x < self.view.frame.origin.x) {
+     if ((dotMaster.dot.frame.origin.x + dotMaster.dot.frame.size.width) > (self.view.frame.origin.x + self.view.frame.size.width) || dotMaster.dot.frame.origin.x < self.view.frame.origin.x) {
      attackDot1Movement.x = -attackDot1Movement.x;
      }
      
-     if (attackDot1.frame.origin.y < self.view.frame.origin.y || (attackDot1.frame.origin.y + attackDot1.frame.size.height) > (self.view.frame.origin.y + self.view.frame.size.height)) {
+     if (dotMaster.dot.frame.origin.y < self.view.frame.origin.y || (dotMaster.dot.frame.origin.y + dotMaster.dot.frame.size.height) > (self.view.frame.origin.y + self.view.frame.size.height)) {
      attackDot1Movement.y = -attackDot1Movement.y;
      }
     
